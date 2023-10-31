@@ -34,13 +34,7 @@ div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, 
     font: inherit;
     vertical-align: baseline;
 }
-.hot_issue {
-    position: relative;
-    z-index: 5;
-    width: 476px;
-    height: 340px;
-    float: left;
-}
+
 /*뉴스페이지 스타일 작업*/
 .ml0 {
     margin-left: 0 !important;
@@ -175,4 +169,112 @@ body {
 .search-button:hover {
     background-color: #0056b3;
     border: 1px solid #0056b3;
+}
+
+
+/*테스트 코드 */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    width: 1000px;
+    margin: 0 auto;
+}
+.container div{
+    text-align: center;
+    display: table;
+}
+.container div span{
+    display: table-cell;
+    vertical-align: middle;
+}
+.top{
+    margin-top: 20px;
+    outline: 1px solid #9F9F9F;
+    width: 1000px;
+    height: 80px;
+    display: table;
+    background-color: #FF5E00;
+}
+.middle{
+    margin-top: 20px;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+}
+.middle-left{
+    outline: 1px solid #9F9F9F;
+    position: absolute;
+    margin-top: 10px;
+    width: 600px;
+    height: 300px;
+}
+.middle2{
+    outline: 1px solid #9F9F9F;
+    position: absolute;
+    margin-top: 10px;
+    width: 600px;
+    height: 300px;
+}
+.middle-left-1{
+    outline: 1px solid;
+    margin-top: 10px;
+    left: 620px;
+    width: 600px;
+    height: 200px;
+}
+.middle-left-2{
+    outline: 1px solid;
+    margin-top: 10px;
+    float: left;
+    left: 620px;
+    width: 600px;
+    height: 200px;
+}
+.middle-left-3{
+    outline: 1px solid;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    left: 620px;
+    width: 600px;
+    height: 200px;
+}
+
+.middle-right{
+    position: absolute;
+    margin-top: 10px;
+    left: 620px;
+    width: 380px;
+    height: 500px;
+}
+.middle-right-1{
+    outline: 1px solid #9F9F9F;
+    width: 200px;
+    height: 150px;
+    background-color: #FF00DD;
+}
+.middle-right-2{
+    outline: 1px solid #9F9F9F;
+    margin-top: 10px;
+    width: 200px;
+    height: 150px;
+    background-color: #FFE400;
+}
+.middle-right-3{
+    outline: 1px solid #9F9F9F;
+    margin-top: 10px;
+    width: 200px;
+    height: 180px;
+    background-color: #99E000;
+}
+.bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: 1px solid #9F9F9F;
+    width: 1000px;
+    height: 100px;
+    background-color: #5D5D5D;
+    color: #fff;
 }

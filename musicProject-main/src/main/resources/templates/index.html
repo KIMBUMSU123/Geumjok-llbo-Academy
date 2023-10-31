@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-        <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{component/config :: config}"></th:block>
 </head>
@@ -7,33 +7,54 @@
 <body>
 <div th:replace="~{component/header :: head}"></div>
 <!--    <div th:replace="~{component/nav :: nav}"></div>-->
-    <div class="hot_issue">
-        <h2>
-            <span class="title_link">현재 인기있는 뉘우스</span>
-            <span class="txt_intro">2023-10-31 update</span>
-        </h2>
-        <ul class="sub_list" style="display: block;">
-            <li class="issue_list04">
-                <dl class="m10">
-                    <dd class="mov_area"></dd>
-                    <dt>
-                        <a href="https://html5.gamedistribution.com/6bf29e0982a64f898a81c3f3612aba26/">
-                            <img class="img_thumbnail" src="/img/rumigosu.jpg">
-                            <span class="title">김범수 그는 신인가?</span>
-                            <span class="news_detail">숨은 루미큐브 장인을 소개합니다</span>
-                        </a>
-                    </dt>
-                </dl>
-            </li>
-        </ul>
-        <ul>
-
-        </ul>
+<div class="container">
+    <!-- TOP
+    <div class="top">
+        <span>TOP (1000 x 80) <br/> #FF5E00;</span>
     </div>
+-->
+    <!-- MIDDLE -->
+    <div class="middle">
+
+        <div class="middle-left">
+            <div class="middle-left-1"><span>LEFT1 (380 x 150) <br/> #FF00DD;</span></div>
+            <div class="middle2">
+                <div class="middle-left-2"><span>LEFT2 (380 x 150) <br/> #FFE400;</span></div>
+                <div class="middle-left-3"><span>LEFT3 (380 x 170) <br/> #99E000;</span></div>
+            </div>
+        </div>
+
+        <div class="middle-right">
+
+            <div class="middle-right-1">
+                <!-- 로그인 페이지 -->
+
+                <div class="login_wrap" id="gnbLoginDiv">
+                    <div class="button_login">
+                        <div class="top-area">
+                            <a href="/login" title="회원가입 - 페이지 이동">회원가입</a>
+                        </div>
+                        <button type="button" class="btn_login" onclick="login_fn()">
+                            <span class="odd_span">로그인</span>
+                        </button>
+                        <!--<button type="button" onclick="login_fn()" width="450"height="300" >로그인</button> -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="middle-right-2"><span>RIGHT2 (380 x 150) <br/> #FFE400;</span></div>
+            <div class="middle-right-3"><span>RIGHT3 (380 x 170) <br/> #99E000;</span></div>
+
+        </div>
+
+    </div>
+    <!--
+        <div class="bottom"><span>BOTTOM (1000 x 100) <br/> #5D5D5D;</span></div>
+    -->
+</div>
 
 
-
-    <div th:replace="~{component/footer :: footer}"></div>
- </body>
+<div th:replace="~{component/footer :: footer}"></div>
+</body>
 </html>
 <h2>ㅄㅄ</h2>
