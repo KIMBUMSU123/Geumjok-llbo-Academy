@@ -21,6 +21,40 @@
     width: 280px;
     height: 119px;
 }
+dd {
+    display: block;
+    margin-inline-start: 40px;
+}
+
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+.hot_issue {
+    position: relative;
+    z-index: 5;
+    width: 476px;
+    height: 340px;
+    float: left;
+}
+.ml0 {
+    margin-left: 0 !important;
+}
+.img_thumbnail{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 156px;
+    height: 155px;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    line-height: 0;
+}
 button, .btn {
     border: 1px solid red;
     display: inline-block;
