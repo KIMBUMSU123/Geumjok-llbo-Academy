@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="width:1250px" align="center">
+    <div class="container">
+        <div th:fragment="head" id="head">
+            <div class="category">
+                <ul class="category">
+                    <li class="category-bar">
+                        <a href="/">공지사항</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="main">
+                <li class="main-bar">
+                    <a href="/"><img src="img/금쪽이로고.png"> </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div>
+<form action="login" method="post">
+    <input type="text" name="memberEmail" placeholder="이메일"><br>
+    <input type="text" name="memberPw" placeholder="비밀번호"><br>
+    <input type="submit" value="로그인">
+        <button onclick="goToSavePage()" width="450"height="300" >회원가입</button>
+</form>
+    </div>
+<script th:inline="javascript">
+    function goToSavePage() {
+        window.location.href = "/save";
+    }
+</script>
+</body>
+</html>

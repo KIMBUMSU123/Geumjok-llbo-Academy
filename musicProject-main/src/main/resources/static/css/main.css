@@ -1,0 +1,141 @@
+.category{
+    display: flex;
+    align-items: stretch;
+    background-color: white;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    size: 10px;
+}
+.category-bar{
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    align-items: flex-end;
+    margin-left: 1500px;
+    
+}
+.id_wrap .login_wrap {
+    position: relative;
+    width: 280px;
+    height: 119px;
+}
+button, .btn {
+    border: 1px solid red;
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: 0;
+    text-decoration: none !important;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    background-color: green;
+    margin: 0px 320px;
+    list-style-type: none;
+
+}
+.menu-item {
+    list-style-type: none;
+    margin-left: 20px;
+    align-items: center;
+    list-style-type: none;
+}
+.main {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    /*padding: 80px;크기임*/
+    margin: 30px 10px 20px 200px;
+
+}
+
+.main-bar {
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+    font-weight: bold;
+    font-size: 50px;
+    margin: 50px 2px 5px 30px;
+    align-items: center;
+}
+/* menu-item 클래스가 적용된 요소 내부의 a 태그 요소 */
+.menu-item a {
+    text-decoration: none;
+    /* a태그는 기본적으로 inline 요소
+        inline 요소는 높이, 너비를 가질 수 없음.
+        높이, 너비를 가지려면 block 요소여야 함.
+        아래 문법은 block요소로 하는 방법임.
+     */
+    display: block;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-item a:hover {
+    background-color: blue;
+}
+
+#login-area {
+    display: flex;
+    margin: 0px 0px 0px 0px;
+
+}
+
+#login-area a {
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* 검색 창 컨테이너 스타일 */
+.search-container {
+    margin: 80px 10px 3px 10px;
+    height: 30px;
+    display: flex;
+}
+
+/* 검색 창 스타일 */
+.search-bar {
+    height: 30px;
+    align-items: center;
+    padding: 5px 5px;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 20px;
+    margin: 0px;
+<!-- 검색바 모깎기 -->
+
+}
+
+
+/* 검색 버튼 스타일 */
+.search-button {
+    height: 30px;
+    padding: 1px 1px;
+    background-color: #007BFF   ;
+    color: white;
+    border: 1px solid #007BFF;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    width: 70px;
+    font-size: 20px;
+}
+
+/* 검색 버튼 호버 효과 */
+.search-button:hover {
+    background-color: #0056b3;
+    border: 1px solid #0056b3;
+}

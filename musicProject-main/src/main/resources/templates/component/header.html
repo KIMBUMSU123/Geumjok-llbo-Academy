@@ -1,0 +1,81 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #login-area {
+            /*float: right; !* 우측으로 부동시킴 *!*/
+            margin-right: 10px; /* 우측 여백 설정 */
+        }
+    </style>
+</head>
+<body>
+
+<div style="width:1250px" align="center">
+    <div class="container">
+        <div th:fragment="head" id="head">
+            <div class="category">
+                <ul class="category">
+                    <li class="category-bar">
+                    <a href="/">공지사항</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="main">
+                <li class="main-bar">
+                    <a href="/"><img src="img/금쪽이로고.png"> </a>
+                    <div class="search-container">
+                        <input type="text" class="search-bar">
+                        <button type="submit" class="search-button">검색</button>
+                    </div>
+                    <!-- 로그인 페이지 -->
+                    <div class="login_wrap" id = "gnbLoginDiv">
+                    <div class = "button_login">
+                    <ul class="main">
+                        <li id="login-area">
+                            <button type="button" onclick="login_fn()" >
+                                <span class="odd_span">로그인</span>
+                            </button>
+                            <!--<button type="button" onclick="login_fn()" width="450"height="300" >로그인</button> -->
+                        </li>
+                    </ul>
+                    </div>
+                    </div>
+                </li>
+            </ul>
+
+
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/">실시간100</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/save">최신음악</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">장르음악</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">지금뜨는아티스트</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">장르음악</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">매거진</a>
+                </li>
+            </ul>
+            <script th:inline="javascript">
+                const login_fn = () => {
+                    location.href = "/login";
+                }
+            </script>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
