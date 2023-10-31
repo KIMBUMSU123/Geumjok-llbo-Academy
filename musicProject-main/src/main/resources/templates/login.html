@@ -3,26 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <th:block th:replace="~{component/config :: config}"></th:block>
 </head>
 <body>
-<div style="width:1250px" align="center">
-    <div class="container">
-        <div th:fragment="head" id="head">
-            <div class="category">
-                <ul class="category">
-                    <li class="category-bar">
-                        <a href="/">공지사항</a>
-                    </li>
-                </ul>
-            </div>
-            <ul class="main">
-                <li class="main-bar">
-                    <a href="/"><img src="img/금쪽이로고.png"> </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+<div th:replace="~{component/header :: head}"></div>
 <div>
 <form action="login" method="post">
     <input type="text" name="memberEmail" placeholder="이메일"><br>
@@ -36,5 +20,6 @@
         window.location.href = "/save";
     }
 </script>
+<div th:replace="~{component/footer :: footer}"></div>
 </body>
 </html>

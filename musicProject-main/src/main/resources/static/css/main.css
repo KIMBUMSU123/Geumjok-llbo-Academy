@@ -211,34 +211,31 @@ body {
     height: 300px;
 }
 .middle2{
-    outline: 1px solid #9F9F9F;
     position: absolute;
     margin-top: 10px;
     width: 600px;
     height: 300px;
 }
 .middle-left-1{
-    outline: 1px solid;
+
     margin-top: 10px;
-    left: 620px;
     width: 600px;
     height: 200px;
 }
 .middle-left-2{
-    outline: 1px solid;
+
     margin-top: 10px;
     float: left;
-    left: 620px;
-    width: 600px;
+    margin-left: 10px;
+    width: 200px;
     height: 200px;
 }
 .middle-left-3{
-    outline: 1px solid;
+
     float: left;
     margin-top: 10px;
     margin-left: 10px;
-    left: 620px;
-    width: 600px;
+    width: 200px;
     height: 200px;
 }
 
