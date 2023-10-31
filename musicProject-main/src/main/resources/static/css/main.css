@@ -41,6 +41,7 @@ div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, 
     height: 340px;
     float: left;
 }
+/*뉴스페이지 스타일 작업*/
 .ml0 {
     margin-left: 0 !important;
 }
@@ -55,6 +56,8 @@ div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, 
     text-align: center;
     line-height: 0;
 }
+
+/* 로그인 버튼*/
 button, .btn {
     border: 1px solid red;
     display: inline-block;
