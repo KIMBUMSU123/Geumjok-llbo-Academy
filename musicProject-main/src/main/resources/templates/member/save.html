@@ -7,21 +7,25 @@
 </head>
 <body>
 <div th:replace="~{component/header :: head}"></div>
-<form action="save" method="post">
-    <input type="text" name="memberNickname" placeholder="닉네임"><br>
-    <input type="text" name="memberEmail" placeholder="이메일"><br>
-    <input type="text" name="memberPw" placeholder="비밀번호"><br>
-    <input type="text" name="memberName" placeholder="이름"><br>
-    <div>
+
+<div class="container mt-5 mb-5" id="member_join">
+    <form action="/member/save" method="post">
+        <input type="text" name="memberNickname" placeholder="닉네임" style="height: 40px;"><br><br>
+        <input type="text" name="memberEmail" placeholder="이메일" style="height: 40px;"><br><br>
+        <input type="text" name="memberPw" placeholder="비밀번호" style="height: 40px;"><br><br>
+        <input type="text" name="memberName" placeholder="이름" style="height:40px;"><br><br>
         <!-- 주민번호 (앞,뒷자리) -->
-        <input type="text" id="front_number" name="memberIdNumber" placeholder="ex)000101" style="width: 71px;"> -
-        <input type="text" id="back_number" name="memberBirth" placeholder="뒷자리" style="width: 71px;">
-    </div>
-    <input type="text" name="memberMobile" placeholder="전화번호"><br>
-    <input type="submit" class="btn btn-primary" value="회원가입">
-</form>
-d<div th:replace="~{component/footer :: footer}"></div>
+        <input type="text" id="front_number" name="memberIdNumber" placeholder="ex)000101" style="width: 93px; height: 40px;">
+        -
+        <input type="text" id="back_number" name="memberBirth" placeholder="뒷자리" style="width: 93px; height: 40px;"><br><br>
+        <input type="text" name="memberMobile" placeholder="전화번호" style="height: 40px;"><br><br>
+        <input type="submit" value="회원가입" style="width: 70px; height: 40px;">
+    </form>
+
+    <div th:replace="~{component/footer :: footer}" class="footer_area"></div>
+</div>
 </body>
+
 <script th:inline="javascript">
     const email_check = () => {
         const email = document.querySelector('[name="memberEmail"]').value;
