@@ -15,6 +15,13 @@
 <div style="width:1250px" align="center">
     <div class="container">
         <div th:fragment="head" id="head">
+            <div class="category">
+                <ul class="category">
+                    <li class="category-bar">
+                    <a href="/">공지사항</a>
+                    </li>
+                </ul>
+            </div>
             <ul class="main">
                 <li class="main-bar">
                     <a href="/"><img src="img/금쪽이로고.png"> </a>
@@ -48,7 +55,7 @@
             </ul>
             <script th:inline="javascript">
                 const login_fn = () => {
-                    location.href = "/member/login";
+                    location.href = "/login";
                 }
             </script>
         </div>
