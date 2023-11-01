@@ -58,9 +58,9 @@ public class MemberController {
     public ResponseEntity emailCheck(@RequestBody MemberDTO memberDTO) {
         boolean result = memberService.emailCheck(memberDTO.getMemberEmail());
         if (result) {
-            return new ResponseEntity<>("사용가능", HttpStatus.OK);
+            return new ResponseEntity<>("사용할 수 있는 이메일 입니다.", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("사용불가능", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("중복된 이메일 입니다.", HttpStatus.CONFLICT);
         }
     }
 

@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <th:block th:replace="~{component/config :: config}"></th:block>
 </head>
 <body>
+<div th:replace="~{component/header :: head}"></div>
 <form action="save" method="post">
     <input type="text" name="memberNickname" placeholder="닉네임"><br>
     <input type="text" name="memberEmail" placeholder="이메일"><br>
@@ -12,12 +14,36 @@
     <input type="text" name="memberName" placeholder="이름"><br>
     <div>
         <!-- 주민번호 (앞,뒷자리) -->
-        <input type="text" id="front_number" name="jumin1" placeholder="ex)000101" style="width: 71px;"> -
-        <input type="text" id="back_number" name="jumin2" placeholder="뒷자리" style="width: 71px;">
+        <input type="text" id="front_number" name="memberIdNumber" placeholder="ex)000101" style="width: 71px;"> -
+        <input type="text" id="back_number" name="memberBirth" placeholder="뒷자리" style="width: 71px;">
     </div>
     <input type="text" name="memberMobile" placeholder="전화번호"><br>
     <input type="submit" class="btn btn-primary" value="회원가입">
 </form>
-
+<div th:replace="~{component/footer :: footer}"></div>
 </body>
+<script th:inline="javascript">
+    const email_check = () => {
+        const email = document.querySelector('[name="memberEmail"]').value;
+        axios({
+            method: "post",
+            url: "/member/dup-check",
+            data: {
+                memberEmail: email
+            }
+        }).then(res => {
+            // 중복 여부를 검사하는 서버 응답에 따라 다음 동작을 결정합니다.
+            if (res.data.isDuplicate) {
+                alert("이미 등록된 이메일 주소입니다. 다른 이메일을 입력해주세요.");
+            } else {
+                // 중복이 아닌 경우, 회원가입 폼을 제출하거나 다른 작업을 수행할 수 있습니다.
+                // 예를 들어, 폼을 제출하는 코드를 추가할 수 있습니다.
+                // 예: document.querySelector('form').submit();
+            }
+        }).catch(err => {
+            // 요청실패 또는 서버에서 4xx, 5xx 응답
+            console.log("err", err);
+        });
+    }
+</script>
 </html>
