@@ -45,7 +45,7 @@ public class MemberController {
             session.setAttribute("loginId", loginResult.getId());
             return "redirect:" + redirectURI;
         } else {
-            return "/member/login";
+            return "/member/main";
         }
     }
 
