@@ -290,8 +290,14 @@ body {
 #footer_area{
     text-align: right;
 }
-
-
+/* 검색페이지 */
+.search_contents{
+    outline: 1px solid #9F9F9F;
+    margin-top: 20px;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+}
 
 
 

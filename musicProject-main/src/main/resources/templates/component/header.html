@@ -20,7 +20,7 @@
                     <a href="/"><img src="/img/금쪽이로고.png"> </a>
                     <div class="search-container">
                         <input type="text" class="search-bar">
-                        <button type="submit" class="search-button">검색</button>
+                        <button type="submit" class="search-button" onclick="search_fn()">검색</button>
                     </div>
                 </li>
             </ul>
@@ -49,6 +49,9 @@
             <script th:inline="javascript">
                 const login_fn = () => {
                     location.href = "/login";
+                }
+                const search_fn = () => {
+                    location.href = "/search/search";
                 }
             </script>
         </div>
