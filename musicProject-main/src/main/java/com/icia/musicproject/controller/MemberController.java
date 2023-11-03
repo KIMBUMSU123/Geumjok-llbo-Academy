@@ -62,6 +62,7 @@ public class MemberController {
     public String myPage() {
         return "/member/main";
     }
+
     // 이메일 중복체크 기능 미완성
     @PostMapping("/dup-check")
     public ResponseEntity emailCheck(@RequestBody MemberDTO memberDTO) {
@@ -82,4 +83,13 @@ public class MemberController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "index";
+    }
+
+
 }
+
