@@ -312,7 +312,10 @@ body {
     height: 500px;
     position: relative;
 }
-
+.cartegory_bar{
+    margin-top: 10px;
+    width: 1000px;
+}
 
 
 
