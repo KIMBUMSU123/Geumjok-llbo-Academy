@@ -38,10 +38,10 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session,
                         @RequestParam("redirectURI") String redirectURI) {
-        System.out.println(memberDTO);
+//        System.out.println(memberDTO);
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
-            System.out.println("loginResult = " + loginResult);
+//            System.out.println("loginResult = " + loginResult);
 //            session.setAttribute("loginNickname", memberDTO.getMemberNickname());
             session.setAttribute("loginNickname", loginResult.getMemberNickname());
 //            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
