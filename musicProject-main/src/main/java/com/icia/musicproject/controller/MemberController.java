@@ -40,13 +40,20 @@ public class MemberController {
                         @RequestParam("redirectURI") String redirectURI) {
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
-            session.setAttribute("loginNickname", memberDTO.getMemberNickname());
+//            session.setAttribute("loginNickname", memberDTO.getMemberNickname());
+            session.setAttribute("loginNickname", loginResult.getMemberNickname());
 //            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
             session.setAttribute("loginId", loginResult.getId());
-            return "redirect:" + redirectURI;
+//            return "redirect:" + redirectURI;
+            return "redirect:/member/login";
         } else {
-            return "/member/main";
+            return "/member/login";
         }
+    }
+
+    @GetMapping("/member/main")
+    public String main(){
+        return "/member/main";
     }
 
     @GetMapping("/myPage")
