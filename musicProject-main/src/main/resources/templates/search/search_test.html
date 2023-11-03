@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTunes API Test</title>
+    <!-- 스타일적용 링크-->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS 적용 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- JavaScript 기능구현 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+<div>
+    <h1>iTunes API 테스트페이지 </h1>
+    <p>가수이름: <input id="search"></p>
+    <button class="btn" id="submit">검색</button>
+    <div id="output"></div>
+</div>
+<script>
+    let button = document.querySelector("#submit");
+    let input = document.querySelector('#search');
+    let output = document.querySelector('#output');
+
+    button.addEventListener('click', () => {
+        getDataFromItunes();
+    });
+
+    function getDataFromItunes() {
+        let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(input.value); // Encode user input
+
+        fetch(url) // You can fetch directly, as some APIs allow cross-origin requests
+            .then(response => response.json())
+            .then(data => {
+                displayData(data);
+            })
+            .catch(error => console.error(error));
+    }
+
+    function displayData(data) {
+        // Implement this function to display the data on your web page as needed
+        // For example, you can loop through the results and create HTML elements to show the data.
+        console.log(data); // For debugging, log the data to the console.
+    }
+
+</script>
+</body>
+</html>

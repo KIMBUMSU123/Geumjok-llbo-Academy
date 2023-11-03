@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SearchController {
     @GetMapping("/search")
     public String searchForm(){
-        return "search/search";
+        return "/search/search";
+    }
+
+    @GetMapping("/search_test")
+    public String search_testForm(){
+        return "/search/search_test";
     }
 
 }
