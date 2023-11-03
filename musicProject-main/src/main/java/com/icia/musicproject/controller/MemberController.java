@@ -38,20 +38,22 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@ModelAttribute MemberDTO memberDTO, HttpSession session,
                         @RequestParam("redirectURI") String redirectURI) {
+        System.out.println(memberDTO);
         MemberDTO loginResult = memberService.login(memberDTO);
         if (loginResult != null) {
+            System.out.println("loginResult = " + loginResult);
 //            session.setAttribute("loginNickname", memberDTO.getMemberNickname());
             session.setAttribute("loginNickname", loginResult.getMemberNickname());
 //            session.setAttribute("loginEmail", memberDTO.getMemberEmail());
             session.setAttribute("loginId", loginResult.getId());
 //            return "redirect:" + redirectURI;
-            return "redirect:/member/login";
+            return "redirect:/member/main";
         } else {
             return "/member/login";
         }
     }
 
-    @GetMapping("/member/main")
+    @GetMapping("/main")
     public String main(){
         return "/member/main";
     }
