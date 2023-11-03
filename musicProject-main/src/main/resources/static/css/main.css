@@ -16,6 +16,20 @@
     margin-left: 1500px;
     
 }
+
+
+.category-bar2 {
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    align-items: flex-end;
+    margin-left: 1500px;
+}
+
+
+
 /* 주민등록번호 스타일 */
 
 
