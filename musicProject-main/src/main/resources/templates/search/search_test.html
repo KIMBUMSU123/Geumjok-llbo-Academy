@@ -12,6 +12,7 @@
 
     <!-- JavaScript 기능구현 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
@@ -22,31 +23,55 @@
     <div id="output"></div>
 </div>
 <script>
-    let button = document.querySelector("#submit");
-    let input = document.querySelector('#search');
-    let output = document.querySelector('#output');
+    $(document).ready(function() {
+        let button = $("#submit");
+        let input = $("#search");
+        let output = $("#output");
 
-    button.addEventListener('click', () => {
-        getDataFromItunes();
+        button.on('click', function() {
+            getDataFromItunes();
+        });
+
+        function getDataFromItunes() {
+            let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(input.val()) + '&country=KR&lang=ko_kr'; // 한국어로 설정
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    displayData(data);
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        }
+
+        function displayData(data) {
+            output.empty(); // Clear previous results
+
+            if (data.results && data.results.length > 0) {
+                // Loop through the results and create HTML elements to display the data
+                $.each(data.results, function(index, result) {
+                    // Create a new <div> for each result
+                    let resultDiv = $('<div class="result">');
+
+                    // Add content to the resultDiv (e.g., track name, artist name)
+                    resultDiv.append($('<p>').text('트랙 이름: ' + result.trackName)); // 한국어로 변경
+                    resultDiv.append($('<p>').text('아티스트: ' + result.artistName)); // 한국어로 변경
+                    resultDiv.append($('<p>').text('컬렉션 이름: ' + result.collectionName)); // 한국어로 변경
+
+                    // Append the resultDiv to the output
+                    output.append(resultDiv);
+                });
+            } else {
+                output.text('검색 결과가 없습니다.');
+            }
+        }
     });
-
-    function getDataFromItunes() {
-        let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(input.value); // Encode user input
-
-        fetch(url) // You can fetch directly, as some APIs allow cross-origin requests
-            .then(response => response.json())
-            .then(data => {
-                displayData(data);
-            })
-            .catch(error => console.error(error));
-    }
-
-    function displayData(data) {
-        // Implement this function to display the data on your web page as needed
-        // For example, you can loop through the results and create HTML elements to show the data.
-        console.log(data); // For debugging, log the data to the console.
-    }
-
 </script>
+
+
 </body>
 </html>
