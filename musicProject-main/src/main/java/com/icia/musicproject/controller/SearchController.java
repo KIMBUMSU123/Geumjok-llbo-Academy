@@ -16,7 +16,7 @@ public class SearchController {
 
     @GetMapping("/search_test")
     public String search_testForm(){
-        return "/search/search_test";
+        return "/search/search_naver";
     }
 
 }

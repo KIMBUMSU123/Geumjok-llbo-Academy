@@ -1,82 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iTunes API Test</title>
+    <meta charset="UTF-8"> <!-- 문서의 문자 인코딩을 설정합니다. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 뷰포트 설정으로 모바일 장치에서 화면 크기를 조정합니다. -->
+    <title>iTunes API Test</title> <!-- 웹 페이지의 제목을 설정합니다. -->
     <!-- 스타일적용 링크-->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- 외부 스타일 시트를 연결하여 웹 페이지에 스타일을 적용합니다. -->
 
     <!-- CSS 적용 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> <!-- Materialize CSS 라이브러리를 가져와서 적용합니다. -->
 
     <!-- JavaScript 기능구현 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> <!-- Materialize JavaScript 라이브러리를 가져옵니다. -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery 라이브러리를 가져옵니다. -->
 </head>
 <body>
 <div>
-    <h1>iTunes API 테스트페이지 </h1>
-    <p>가수이름: <input id="search"></p>
-    <button class="btn" id="submit">검색</button>
-    <div id="output"></div>
+    <h1>iTunes API 테스트페이지</h1> <!-- 웹 페이지의 제목을 표시합니다. -->
+    <p>가수이름: <input id="search"></p> <!-- 검색 입력 상자를 표시합니다. -->
+    <button class="btn" id="submit">검색</button> <!-- "검색" 버튼을 표시합니다. -->
+    <div id="output"></div> <!-- 검색 결과를 표시할 빈 <div> 요소를 생성합니다. -->
 </div>
 <script>
     $(document).ready(function() {
-        let button = $("#submit");
-        let input = $("#search");
-        let output = $("#output");
+        let button = $("#submit"); // "검색" 버튼을 jQuery로 선택합니다.
+        let input = $("#search"); // 검색 입력 상자를 jQuery로 선택합니다.
+        let output = $("#output"); // 검색 결과를 표시할 <div> 요소를 jQuery로 선택합니다.
 
         button.on('click', function() {
-            getDataFromItunes();
+            getDataFromItunes(); // "검색" 버튼이 클릭되면 iTunes API에서 데이터를 가져오는 함수를 호출합니다.
         });
 
         function getDataFromItunes() {
-            let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(input.val()) + '&country=KR&lang=ko_kr'; // 한국어로 설정
+            let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(input.val()) + '&country=KR&lang=ko_kr';
+            // iTunes API로 요청할 URL을 생성합니다. 사용자의 입력을 검색어로 사용하고, 한국(KR)에서 검색하며, 한국어로(KO_KR) 결과를 요청합니다.
 
             $.ajax({
-                url: url,
-                type: 'GET',
-                dataType: 'json',
+                url: url, // 요청할 URL을 지정합니다.
+                type: 'GET', // HTTP GET 요청을 수행합니다.
+                dataType: 'json', // 반환되는 데이터의 형식은 JSON 형식입니다.
                 success: function(data) {
-                    displayData(data);
+                    displayData(data); // 요청이 성공하면 결과를 화면에 표시하는 함수를 호출합니다.
                 },
                 error: function(error) {
-                    console.error(error);
+                    console.error(error); // 요청이 실패하면 오류를 콘솔에 출력합니다.
                 }
             });
         }
 
         function displayData(data) {
-            output.empty(); // Clear previous results
+            output.empty(); // 이전 결과를 지우고 새로운 결과를 표시하기 위해 <div>를 비웁니다.
 
             if (data.results && data.results.length > 0) {
-                // Loop through the results and create HTML elements to display the data
+                // 결과가 있을 때
                 $.each(data.results, function(index, result) {
-                    // Create a new <div> for each result
-                    let resultDiv = $('<div class="result">');
+                    // 각 결과 항목에 대해 반복문을 실행하며, 화면에 정보를 표시합니다.
 
-                    // Add content to the resultDiv (e.g., track name, artist name)
-                    resultDiv.append($('<p>').text('트랙 이름: ' + result.trackName)); // 노래 또는 트랙의 제목
-                    resultDiv.append($('<p>').text('아티스트: ' + result.artistName)); // 작곡가 이름
-                    resultDiv.append($('<p>').text('컬렉션 이름: ' + result.collectionName)); // 앨범 또는 컬랙션 이름
-                    resultDiv.append($('<p>').text('카테고리: ' + result.primaryGenreName)); // 카테고리
-                    resultDiv.append($('<p>').text('발매일: ' + result.releaseDate)); // 발매일
-                    resultDiv.append($('<p>').text('아트워크 이미지: ' + result.artworkUrl100)); // 아트워크 이미지
-                    resultDiv.append($('<p>').text('미리듣기 url: ' + result.previewUrl)); // 미리듣기 url
-                    resultDiv.append($('<p>').text('미디어 항목설명: ' + result.description)); // 미디어 항목설 명
-                    resultDiv.append($('<p>').text('==========='));
-                    // Append the resultDiv to the output
-                    output.append(resultDiv);
+                    let resultDiv = $('<div class="result">'); // 결과를 표시할 새로운 <div> 요소를 생성합니다.
+
+                    resultDiv.append($('<p>').text('트랙 이름: ' + result.trackName)); // 노래 또는 트랙의 제목을 표시합니다.
+                    resultDiv.append($('<p>').text('아티스트: ' + result.artistName)); // 작곡가 이름을 표시합니다.
+                    resultDiv.append($('<p>').text('컬렉션 이름: ' + result.collectionName)); // 앨범 또는 컬렉션 이름을 표시합니다.
+                    resultDiv.append($('<p>').text('카테고리: ' + result.primaryGenreName)); // 카테고리를 표시합니다.
+                    resultDiv.append($('<p>').text('발매일: ' + result.releaseDate)); // 발매일을 표시합니다.
+                    resultDiv.append($('<p>').text('아트워크 이미지: ' + result.artworkUrl100)); // 아트워크 이미지를 표시합니다.
+                    resultDiv.append($('<p>').text('미리듣기 url: ' + result.previewUrl)); // 미리듣기 URL을 표시합니다.
+                    resultDiv.append($('<p>').text('미디어 항목설명: ' + result.description)); // 미디어 항목 설명을 표시합니다.
+                    resultDiv.append($('<p>').text('===========')); // 결과 간 구분을 위한 줄을 추가합니다.
+
+                    output.append(resultDiv); // 결과를 <div>에 추가하여 화면에 표시합니다.
                 });
+
+
+
             } else {
-                output.text('검색 결과가 없습니다.');
+                output.text('검색 결과가 없습니다.'); // 결과가 없는 경우 "검색 결과가 없습니다." 메시지를 표시합니다.
             }
         }
     });
 </script>
-
-
 </body>
 </html>
