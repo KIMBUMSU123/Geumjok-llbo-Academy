@@ -3,7 +3,6 @@ package com.icia.musicproject.service;
 import com.icia.musicproject.DTO.BoardDTO;
 import com.icia.musicproject.entity.BoardEntity;
 import com.icia.musicproject.entity.MemberEntity;
-import com.icia.musicproject.repository.BoardFileRepository;
 import com.icia.musicproject.repository.BoardRepository;
 import com.icia.musicproject.repository.MemberRepository;
 import com.icia.musicproject.util.UtilClass;
@@ -20,7 +19,6 @@ import java.util.NoSuchElementException;
 @Service
 public class BoardService {
     private final BoardRepository boardRepository;
-    private final BoardFileRepository boardFileRepository;
     private final MemberRepository memberRepository;
 
 

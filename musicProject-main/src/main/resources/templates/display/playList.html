@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+
+<body>
+<div th:replace="~{component/category2 :: head}"></div>
+
+<div th:replace="~{component/header :: head}"></div>
+<!--    <div th:replace="~{component/nav :: nav}"></div>-->
+<div class="container-2">
+  <div class="PlayList">
+    <div class="SongPlay"></div>
+    <div class="SongList"></div>
+    <div class="PlayListList"></div>
+  </div>
+</div>
+</body>
+</html>
