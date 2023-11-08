@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"> <!-- 문서의 문자 인코딩을 설정합니다. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 뷰포트 설정으로 모바일 장치에서 화면 크기를 조정합니다. -->
@@ -17,11 +17,13 @@
 <body>
 <div>
     <h1>iTunes API 테스트페이지</h1> <!-- 웹 페이지의 제목을 표시합니다. -->
-    <p>가수이름: <input id="search"></p> <!-- 검색 입력 상자를 표시합니다. -->
+    <p>가수이름: <input id="search" th:value="${q}"></p> <!-- 검색 입력 상자를 표시합니다. -->
     <button class="btn" id="submit">검색</button> <!-- "검색" 버튼을 표시합니다. -->
     <div id="output"></div> <!-- 검색 결과를 표시할 빈 <div> 요소를 생성합니다. -->
 </div>
-<script>
+<script th:inline="javascript">
+    const q = [[${q}]];
+    console.log(q);
     $(document).ready(function() {
         let button = $("#submit"); // "검색" 버튼을 jQuery로 선택합니다.
         let input = $("#search"); // 검색 입력 상자를 jQuery로 선택합니다.
@@ -32,7 +34,7 @@
         });
 
         function getDataFromItunes() {
-            let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(input.val()) + '&country=KR&lang=ko_kr';
+            let url = 'https://itunes.apple.com/search?term=' + encodeURIComponent(q) + '&country=KR&lang=ko_kr';
             // iTunes API로 요청할 URL을 생성합니다. 사용자의 입력을 검색어로 사용하고, 한국(KR)에서 검색하며, 한국어로(KO_KR) 결과를 요청합니다.
 
             $.ajax({
@@ -77,6 +79,7 @@
                 output.text('검색 결과가 없습니다.'); // 결과가 없는 경우 "검색 결과가 없습니다." 메시지를 표시합니다.
             }
         }
+        getDataFromItunes();
     });
 </script>
 </body>

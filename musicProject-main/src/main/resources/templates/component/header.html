@@ -19,7 +19,7 @@
                 <li class="main-bar">
                     <a href="/"><img src="/img/금쪽이로고.png"> </a>
                     <div class="search-container">
-                        <input type="text" class="search-bar">
+                        <input name="q" type="text" class="search-bar">
                         <button type="submit" class="search-button" onclick="search_fn()">검색</button>
                     </div>
                 </li>
@@ -51,7 +51,8 @@
                     location.href = "/login";
                 }
                 const search_fn = () => {
-                    location.href = "/search/search_test";
+                    const q = document.querySelector('[name="q"]').value;
+                    location.href = `/search/search_test?q=${q}`;
                 }
             </script>
         </div>
