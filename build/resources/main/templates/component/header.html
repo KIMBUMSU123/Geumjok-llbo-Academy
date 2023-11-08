@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #login-area {
+            /*float: right; !* 우측으로 부동시킴 *!*/
+            margin-right: 10px; /* 우측 여백 설정 */
+        }
+    </style>
+</head>
+<body>
+
+<div style="width:1250px" align="center">
+    <div class="container">
+        <div th:fragment="head" id="head">
+            <ul class="main">
+                <li class="main-bar">
+                    <a href="/"><img src="/img/금쪽이로고.png"> </a>
+                    <div class="search-container">
+                        <input type="text" class="search-bar">
+                        <button type="submit" class="search-button" onclick="search_fn()">검색</button>
+                    </div>
+                </li>
+            </ul>
+
+
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/">실시간100</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/save">최신음악</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">장르음악</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">지금뜨는아티스트</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">장르음악</a>
+                </li>
+                <li class="menu-item">
+                    <a href="/list">매거진</a>
+                </li>
+            </ul>
+            <script th:inline="javascript">
+                const login_fn = () => {
+                    location.href = "/login";
+                }
+                const search_fn = () => {
+                    location.href = "/search/search_test";
+                }
+            </script>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
