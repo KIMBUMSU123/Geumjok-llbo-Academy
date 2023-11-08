@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+<body>
+<div th:replace="~{component/header :: head}"></div>
+
+<form action="/comment/save" method="post">
+    <input type="text" class="comment-writer" th:value="${session.loginNickname}"></input>
+    <input type="text" class="comment-input" placeholder="댓글을 입력하세요"></input>
+    <button class="comment-button" onclick="comment_write()">댓글 남기기</button>
+</form>
+<div class="container mt-5" id="comment-list">
+    <div th:if="${commentList == null}">
+        <p>작성된 댓글이 없습니다.</p>
+    </div>
+    <div th:unless="${commentList == null}">
+        <table class="table">
+            <tr>
+                <th>writer</th>
+                <th>contents</th>
+                <th colspan="3">date</th>
+            </tr>
+            <tr th:each="comment: ${commentList}">
+                <td th:text="${comment.commentWriter}"></td>
+                <td th:text="${comment.commentContents}"></td>
+                <td th:text="${comment.createdAt}"></td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script th:inline="javascript">
+    const comment_list = (commentList) => {
+        console.log("댓글 목록 함수", commentList);
+        const resultArea = document.querySelector("#comment-list");
+        let output = "        <table class=\"table\">\n" +
+            "            <tr>\n" +
+            "                <th>writer</th>\n" +
+            "                <th>contents</th>\n" +
+            "                <th colspan=\"3\">date</th>\n" +
+            "            </tr>";
+        for (let i in commentList) {
+            output += "<tr>\n" +
+                "                <td>" + commentList[i].commentWriter + "</td>\n" +
+                "                <td>" + commentList[i].commentContents + "</td>\n" +
+                "                <td>" + commentList[i].createdAt + "</td>\n";
+            // if (commentList[i].isLike == 0) {
+            //     output += "<td>" + "<i class=\"bi bi-suit-heart\" onclick=\"like_fn('" + commentList[i].id + "')\"></i>";
+            // } else {
+            //     output += "<td>" + "<i class=\"bi bi-suit-heart-fill\" onclick=\"unlike_fn('" + commentList[i].id + "')\"></i>";
+            // }
+            // output += "<span class='ms-1'>" + commentList[i].likeCount + "</span>";
+            // output += "</td></tr>";
+        }
+        output += "</table>";
+        resultArea.innerHTML = output;
+    }
+
+    const comment_write = () => {
+        const writer = document.querySelector("#comment-writer").value;
+        const contents = document.querySelector("#comment-contents").value;
+        const boardId = [[${board.id}]];
+        axios({
+            method: "post",
+            url: "/comment/display/songList",
+            data: {
+                commentWriter: writer,
+                commentContents: contents,
+                boardId: boardId
+            }
+        }).then(res => {
+            console.log("res", res);
+            console.log("댓글 목록", res.data);
+            document.querySelector("#comment-writer").value = "";
+            document.querySelector("#comment-contents").value = "";
+            comment_list(res.data);
+        }).catch(err => {
+            console.log("err", err);
+        });
+    }
+</script>
+<div th:replace="~{component/footer :: footer}"></div>
+</body>
+</html>
