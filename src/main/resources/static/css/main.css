@@ -1,0 +1,328 @@
+.category{
+    display: flex;
+    align-items: stretch;
+    background-color: white;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    size: 10px;
+}
+.category-bar{
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    align-items: flex-end;
+    margin-left: 1500px;
+    
+}
+
+
+.category-bar2 {
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+    font-weight: bold;
+    font-size: 15px;
+    align-items: flex-end;
+    margin-left: 1500px;
+}
+
+
+
+/* 주민등록번호 스타일 */
+
+
+.id_wrap .login_wrap {
+    position: relative;
+    width: 280px;
+    height: 119px;
+}
+dd {
+    display: block;
+    margin-inline-start: 40px;
+}
+
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* 뉴스페이지 스타일 작업 */
+.ml0 {
+    margin-left: 0 !important;
+}
+.img_thumbnail{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 156px;
+    height: 155px;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    line-height: 0;
+}
+
+/* 로그인 버튼 */
+button, .btn {
+    border: 1px solid red;
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    padding: 0;
+    background: 0;
+    border: 0;
+    text-decoration: none !important;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.menu {
+    display: flex;
+    align-items: center;
+    background-color: green;
+    margin: 0px 320px;
+    list-style-type: none;
+
+}
+.menu-item {
+    list-style-type: none;
+    margin-left: 20px;
+    align-items: center;
+    list-style-type: none;
+}
+.main {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    /*padding: 80px;크기임*/
+    margin: 30px 10px 20px 200px;
+
+}
+
+.main-bar {
+    display: flex;
+    list-style-type: none;
+    background-color: white;
+    font-weight: bold;
+    font-size: 50px;
+    margin: 50px 2px 5px 30px;
+    align-items: center;
+}
+/* menu-item 클래스가 적용된 요소 내부의 a 태그 요소 */
+.menu-item a {
+    text-decoration: none;
+    /* a태그는 기본적으로 inline 요소
+        inline 요소는 높이, 너비를 가질 수 없음.
+        높이, 너비를 가지려면 block 요소여야 함.
+        아래 문법은 block요소로 하는 방법임.
+     */
+    display: block;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-item a:hover {
+    background-color: blue;
+}
+
+#login-area {
+    display: flex;
+    margin: 0px 0px 0px 0px;
+
+}
+
+#login-area a {
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* 검색 창 컨테이너 스타일 */
+.search-container {
+    margin: 80px 10px 3px 10px;
+    height: 30px;
+    display: flex;
+}
+
+/* 검색 창 스타일 */
+.search-bar {
+    height: 30px;
+    align-items: center;
+    padding: 5px 5px;
+    width: 400px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    font-size: 20px;
+    margin: 0px;
+<!-- 검색바 모깎기 -->
+
+}
+
+
+/* 검색 버튼 스타일 */
+.search-button {
+    height: 30px;
+    padding: 1px 1px;
+    background-color: #007BFF   ;
+    color: white;
+    border: 1px solid #007BFF;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    width: 70px;
+    font-size: 20px;
+}
+
+/* 검색 버튼 호버 효과 */
+.search-button:hover {
+    background-color: #0056b3;
+    border: 1px solid #0056b3;
+}
+
+
+/*테스트 코드 */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container{
+    width: 1000px;
+    margin: 0 auto;
+}
+.container div{
+    text-align: center;
+    display: table;
+}
+.container div span{
+    display: table-cell;
+    vertical-align: middle;
+}
+.top{
+    margin-top: 20px;
+    outline: 1px solid #9F9F9F;
+    width: 1000px;
+    height: 80px;
+    display: table;
+    background-color: #FF5E00;
+}
+.middle{
+    margin-top: 20px;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+}
+.middle-left{
+    outline: 1px solid #9F9F9F;
+    position: absolute;
+    margin-top: 10px;
+    width: 600px;
+    height: 300px;
+}
+.middle2{
+    position: absolute;
+    margin-top: 10px;
+    width: 600px;
+    height: 300px;
+}
+.middle-left-1{
+
+    margin-top: 10px;
+    width: 600px;
+    height: 200px;
+}
+.middle-left-2{
+
+    margin-top: 10px;
+    float: left;
+    margin-left: 10px;
+    width: 200px;
+    height: 200px;
+}
+.middle-left-3{
+
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.middle-right{
+    position: absolute;
+    margin-top: 10px;
+    left: 620px;
+    width: 380px;
+    height: 500px;
+}
+.middle-right-1{
+    outline: 1px solid #9F9F9F;
+    width: 200px;
+    height: 150px;
+    background-color: #FF00DD;
+}
+.middle-right-2{
+    outline: 1px solid #9F9F9F;
+    margin-top: 10px;
+    width: 200px;
+    height: 150px;
+    background-color: #FFE400;
+}
+.middle-right-3{
+    outline: 1px solid #9F9F9F;
+    margin-top: 10px;
+    width: 200px;
+    height: 180px;
+    background-color: #99E000;
+}
+.bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    outline: 1px solid #9F9F9F;
+    width: 1000px;
+    height: 100px;
+    background-color: #5D5D5D;
+    color: #fff;
+}
+
+/* 회원가입 */
+
+#member_join{
+    text-align: center;
+}
+
+/* footer */
+
+#footer_area{
+    text-align: right;
+}
+/* 검색페이지 */
+.search_contents{
+    outline: 1px solid #9F9F9F;
+    margin-top: 20px;
+    width: 1000px;
+    height: 500px;
+    position: relative;
+}
+.cartegory_bar{
+    margin-top: 10px;
+    width: 1000px;
+}
+
+
+
+
+
+
+
+
+
+
