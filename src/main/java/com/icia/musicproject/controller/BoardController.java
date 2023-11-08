@@ -26,7 +26,7 @@ public class BoardController {
     @PostMapping("/save")
     public String save(@ModelAttribute BoardDTO boardDTO) throws IOException {
         boardService.save(boardDTO);
-        return "redirect:/board";
+        return "redirect:/board/list";
     }
     @GetMapping("/list")
     public String findAll(Model model,

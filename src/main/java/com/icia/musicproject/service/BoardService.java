@@ -3,7 +3,6 @@ package com.icia.musicproject.service;
 import com.icia.musicproject.DTO.BoardDTO;
 import com.icia.musicproject.entity.BoardEntity;
 import com.icia.musicproject.entity.MemberEntity;
-import com.icia.musicproject.repository.BoardFileRepository;
 import com.icia.musicproject.repository.BoardRepository;
 import com.icia.musicproject.repository.MemberRepository;
 import com.icia.musicproject.util.UtilClass;
@@ -12,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.NoSuchElementException;
@@ -20,12 +20,13 @@ import java.util.NoSuchElementException;
 @Service
 public class BoardService {
     private final BoardRepository boardRepository;
-    private final BoardFileRepository boardFileRepository;
     private final MemberRepository memberRepository;
 
 
+    @Transactional
     public Long save(BoardDTO boardDTO) throws IOException {
-        MemberEntity memberEntity = memberRepository.findByMemberEmail(boardDTO.getBoardWriter()).orElseThrow(() -> new NoSuchElementException());
+        System.out.println("boardDTO = " + boardDTO);
+        MemberEntity memberEntity = memberRepository.findByMemberNickname(boardDTO.getBoardNickname()).orElseThrow(() -> new NoSuchElementException());
         // Create a new BoardEntity without file attachment
         BoardEntity boardEntity = BoardEntity.toSaveEntity(memberEntity, boardDTO);
         // Save the boardEntity to the repository
@@ -54,10 +55,17 @@ public class BoardService {
                 BoardDTO.builder()
                         .id(boardEntity.getId())
                         .boardTitle(boardEntity.getBoardTitle())
+                        .boardNickname(boardEntity.getBoardNickname())
+                        .boardContents(boardEntity.getBoardContents())
                         .boardWriter(boardEntity.getBoardWriter())
                         .boardHits(boardEntity.getBoardHits())
                         .createdAt(UtilClass.dateTimeFormat(boardEntity.getCreatedAt()))
                         .build());
         return boardList;
     }
+//    @Transactional
+//    public void increaseHits(Long id) {
+//        boardRepository.increaseHits(id);
+//    }
+
 }

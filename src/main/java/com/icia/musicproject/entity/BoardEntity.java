@@ -20,8 +20,11 @@ public class BoardEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20)
     private String boardWriter;
+
+    @Column(length = 20)
+    private String boardNickname;
 
     @Column(length = 50, nullable = false)
     private String boardTitle;
@@ -35,15 +38,11 @@ public class BoardEntity extends BaseEntity {
     @Column
     private int boardLike;
 
-    @Column
-    private int fileAttached;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private MemberEntity memberEntity;
 
-    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<BoardFileEntity> boardFileEntityList = new ArrayList<>();
+
 
     // CommentEntity 미완성
 //    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -53,9 +52,9 @@ public class BoardEntity extends BaseEntity {
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setMemberEntity(memberEntity);
         boardEntity.setBoardWriter(boardDTO.getBoardWriter());
+        boardEntity.setBoardNickname(boardDTO.getBoardNickname());
         boardEntity.setBoardTitle(boardDTO.getBoardTitle());
         boardEntity.setBoardContents(boardDTO.getBoardContents());
-        boardEntity.setFileAttached(0);
         return boardEntity;
     }
 

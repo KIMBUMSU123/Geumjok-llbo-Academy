@@ -9,16 +9,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
     /*
         update board_table set board_hits=board_hits+1 where id=?
         jpql(java persistence query language)
      */
-    @Modifying // insert, update, delete
-    @Query(value = "update BoardEntity b set b.boardHits=b.boardHits+1 where b.id=:id")
-//    @Query(value = "update board_table set board_hits=board_hits+1 where id=:id", nativeQuery = true)
-    void increaseHits(@Param("id") Long id);
+//    @Modifying // insert, update, delete
+//    @Query(value = "update BoardEntity b set b.boardHits=b.boardHits+1 where b.id=:id")
+//    void increaseHits(@Param("id") Long id);
 
     // select * from board_table where board_title=?
     List<BoardEntity> findByBoardTitle(String boardTitle);
@@ -42,5 +42,6 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
 
     // 제목 또는 작성자에 검색어가 포함된 결과 페이징
     // select * from board_table where board_title like '%q%' or board_writer like '%q%' order by id desc
-    Page<BoardEntity> findByBoardTitleContainingOrBoardWriterContaining(String q1, String q2, Pageable pageable);
+//    Page<BoardEntity> findByBoardTitleContainingOrBoardWriterContaining(String q1, String q2, Pageable pageable);
+
 }
