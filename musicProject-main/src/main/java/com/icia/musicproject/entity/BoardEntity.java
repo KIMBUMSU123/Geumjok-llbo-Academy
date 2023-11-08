@@ -20,8 +20,11 @@ public class BoardEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 20)
     private String boardWriter;
+
+    @Column(length = 20, nullable = false)
+    private String boardNickname;
 
     @Column(length = 50, nullable = false)
     private String boardTitle;
@@ -50,11 +53,17 @@ public class BoardEntity extends BaseEntity {
     public static BoardEntity toSaveEntity(MemberEntity memberEntity, BoardDTO boardDTO) {
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setMemberEntity(memberEntity);
-        boardEntity.setBoardWriter(boardDTO.getBoardWriter());
+
+        // boardDTO.getBoardWriter()가 null이면 기본값을 설정 (여기서는 "Anonymous"로 설정)
+        boardEntity.setBoardWriter(boardDTO.getBoardWriter() != null ? boardDTO.getBoardWriter() : "Anonymous");
+
+        boardEntity.setBoardNickname(boardDTO.getBoardNickname());
         boardEntity.setBoardTitle(boardDTO.getBoardTitle());
         boardEntity.setBoardContents(boardDTO.getBoardContents());
         boardEntity.setFileAttached(0);
+
         return boardEntity;
     }
+
 
 }

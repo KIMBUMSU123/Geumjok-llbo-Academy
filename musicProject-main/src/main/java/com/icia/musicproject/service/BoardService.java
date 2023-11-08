@@ -23,10 +23,17 @@ public class BoardService {
 
 
     public Long save(BoardDTO boardDTO) throws IOException {
-        MemberEntity memberEntity = memberRepository.findByMemberEmail(boardDTO.getBoardWriter()).orElseThrow(() -> new NoSuchElementException());
-        // Create a new BoardEntity without file attachment
+        String emailOrNickname = boardDTO.getBoardNickname();  // 닉네임 또는 이메일 값을 가져옴
+
+// 사용자가 이메일을 입력한 경우
+        MemberEntity memberEntity = memberRepository.findByMemberEmail(emailOrNickname)
+                .orElseGet(() -> memberRepository.findByMemberNickname(emailOrNickname)
+                        .orElseThrow(() -> new NoSuchElementException("해당하는 멤버를 찾을 수 없습니다. 입력된 값: " + emailOrNickname)));
+
+
+        // 나머지 코드는 그대로입니다.
+
         BoardEntity boardEntity = BoardEntity.toSaveEntity(memberEntity, boardDTO);
-        // Save the boardEntity to the repository
         BoardEntity savedEntity = boardRepository.save(boardEntity);
         System.out.println("savedEntity = " + savedEntity);
         return savedEntity.getId();
@@ -53,6 +60,7 @@ public class BoardService {
                         .id(boardEntity.getId())
                         .boardTitle(boardEntity.getBoardTitle())
                         .boardWriter(boardEntity.getBoardWriter())
+                        .boardNickname(boardEntity.getBoardNickname())
                         .boardHits(boardEntity.getBoardHits())
                         .createdAt(UtilClass.dateTimeFormat(boardEntity.getCreatedAt()))
                         .build());

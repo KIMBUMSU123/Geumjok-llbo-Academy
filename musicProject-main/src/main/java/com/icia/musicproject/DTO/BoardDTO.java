@@ -19,6 +19,7 @@ import java.util.List;
 public class BoardDTO {
     private Long id;
     private String boardWriter;
+    private String boardNickname;
     private String boardTitle;
     private String boardContents;
     private String createdAt;
@@ -35,6 +36,7 @@ public class BoardDTO {
         BoardDTO boardDTO = new BoardDTO();
         boardDTO.setId(boardEntity.getId());
         boardDTO.setBoardWriter(boardEntity.getBoardWriter());
+        boardDTO.setBoardNickname(boardEntity.getBoardNickname());
         boardDTO.setBoardTitle(boardEntity.getBoardTitle());
         boardDTO.setBoardContents(boardEntity.getBoardContents());
         boardDTO.setCreatedAt(UtilClass.dateTimeFormat(boardEntity.getCreatedAt()));
