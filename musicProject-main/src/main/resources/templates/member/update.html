@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="~{component/config :: config}"></th:block>
+</head>
+<body>
+<div th:replace="~{component/header :: head}"></div>
+
+<div class="container">
+    <!-- 화면에 보여질 내용이 들어갈 부분 -->
+    <form action="/member/update" method="post" name="updateForm">
+        <input type="hidden" name="id" th:value="${member.id}">
+        <input type="text" class="form-control" name="memberEmail" th:value="${member.memberEmail}" readonly> <br>
+        <input type="text" name="memberPassword" placeholder="비밀번호"> <br>
+        <input type="text" name="memberName" placeholder="이름" th:value="${member.memberName}"> <br>
+        <input type="date" name="memberBirth" th:value="${member.memberBirth}"> <br>
+        <input type="text" name="memberMobile" placeholder="전화번호" th:value="${member.memberMobile}"> <br>
+        <input type="button" value="수정" onclick="member_update()">
+    </form>
+</div>
+<div th:replace="~{component/footer :: footer}" class="footer_area"></div>
+</body>
+</html>
