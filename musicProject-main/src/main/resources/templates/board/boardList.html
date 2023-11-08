@@ -7,8 +7,34 @@
 </head>
 <body>
 <div th:replace="~{component/header :: head}"></div>
-<a href="/board/save">글작성</a>
 
+<div class="container mt-5 mb-5">
+    <!-- 화면에 보여질 내용이 들어갈 부분 -->
+    <div class="container" id="paging-list">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">닉네임</th>
+                <th scope="col">제목</th>
+                <th scope="col">작성일</th>
+                <th scope="col">조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board: ${boardList}">
+                <td th:text="${board.id}"></td>
+                <td th:text="${board.boardNickname}"></td>
+                <td><a th:href="@{|/board/${board.id}|(page=${page}, type=${type}, q=${q})}"
+                       th:text="${board.boardTitle}">제목</a></td>
+                <td th:text="${board.createdAt}"></td>
+                <td th:text="${board.boardHits}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/board/save">글작성</a>
+    </div>
+</div>
 <div th:replace="~{component/footer :: footer}"></div>
 </body>
 </html>
